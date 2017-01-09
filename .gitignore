@@ -1,5 +1,5 @@
 # Logs
-logs
+# logs
 *.log
 npm-debug.log*
 
@@ -37,3 +37,4 @@ jspm_packages
 .node_repl_history
 
 utils/key.js
+.DS_Store

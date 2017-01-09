@@ -1,21 +1,22 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.container{
+
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.nowinfo{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.now-cityname{
+  font-size:30px;
 }
 
-.usermotto {
-  margin-top: 200px;
+.now-temperature{
+  padding-top:15px;
+  font-size:50px;
 }
+
+

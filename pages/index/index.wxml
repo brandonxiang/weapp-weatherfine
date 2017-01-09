@@ -1,10 +1,24 @@
 <!--index.wxml-->
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
+  <!--<view  bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="usermotto">
+  </view>-->
+  <!--<view class="usermotto">
     <text class="user-motto">{{motto}}</text>
+  </view>-->
+  <view class="nowinfo">
+    <text class="now-cityname">{{now.cityName}}</text>
+    <text class="now-text">{{now.text}}</text>
+    <text class="now-temperature">{{now.temperature}}</text>
+  </view>
+
+  <view class="futureinfo">
+<scroll-view scroll-y="true" style="height: 200px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view id="green" class="scroll-view-item bc_green"></view>
+    <view id="red"  class="scroll-view-item bc_red"></view>
+    <view id="yellow" class="scroll-view-item bc_yellow"></view>
+    <view id="blue" class="scroll-view-item bc_blue"></view>
+  </scroll-view>
   </view>
 </view>

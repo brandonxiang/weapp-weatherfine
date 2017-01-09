@@ -1,59 +1,56 @@
-import {getDailyWeather,getNowWeather} from '../../utils/service'
-import {KEY} from '../../utils/key.js'
+import { getDailyWeather, getNowWeather } from '../../utils/service'
+import { KEY } from '../../utils/key.js'
 
-var city ='shenzhen'
-var unit ='c'
+var city = 'shenzhen'
+var unit = 'c'
 var lang = 'zh-Hans'
 
 var app = getApp()
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {}
+    now: {},
+    future:{}
   },
 
-  bindViewTap: function() {
-    // wx.navigateTo({
-    //   url: '../logs/logs'
-    // })
-  },
   onLoad: function () {
     console.log('onLoad')
     var that = this
 
-    app.getUserInfo(function(userInfo){
-
-      that.setData({
-        userInfo:userInfo
-      })
-      that.update()
-    })
-
-    console.log(KEY)
-
-    getDailyWeather({
-      data:{
-        key:KEY,
-        location:city,
+    getNowWeather({
+      data: {
+        key: KEY,
+        location: city,
         language: lang,
-        unit:unit,
-        start:0,
-        days:3
+        unit: unit,
       },
-      success:(res)=>{
-        console.log(res)
+      success: (res) => {
+        const result = res.data.results[0]
+        const cityName = result.location.name
+        const temperature = result.now.temperature
+        const text = result.now.text
+        that.setData({ now: { cityName: cityName, temperature: temperature, text: text } })
       }
     })
 
-    getNowWeather({
-      data:{
-        key:KEY,
-        location:city,
-        language:lang,
-        unit:unit,
+    getDailyWeather({
+      data: {
+        key: KEY,
+        location: city,
+        language: lang,
+        unit: unit,
+        start: 0,
+        days: 3
       },
-      success: (res)=>{
+      success: (res) => {
         console.log(res)
+        const future = []
+        const results = res.data.results[0]
+        const daily = results.daily
+        const weekday = ['今日','明天','后天']
+        for(var i in daily){
+          future.push({day:weekday[i],high:daily[i].high,low:daily[i].low})
+        }
+        that.setData({future:future})
       }
     })
   }
