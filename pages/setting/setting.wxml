@@ -14,6 +14,10 @@
       语言
     </view>
     <view class="wa-item">
+      摄氏度
+      <switch checked bindchange="switch1Change"/>
+    </view>
+    <view class="wa-item">
       关于
     </view>
   </view>

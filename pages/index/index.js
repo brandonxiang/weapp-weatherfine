@@ -1,25 +1,33 @@
-import { getDailyWeather, getNowWeather } from '../../utils/service'
+import { getDailyWeather, getNowWeather, getCityName } from '../../utils/service'
 import { KEY } from '../../utils/key.js'
 
-var city = 'shenzhen'
+
 var unit = 'c'
 var lang = 'zh-Hans'
 
 var app = getApp()
 Page({
   data: {
+    city:'深圳市',
     now: {},
     future:{}
   },
 
   onLoad: function () {
-    console.log('onLoad')
     var that = this
 
+    getCityName((res)=>{
+      that.setData({city:res.data.regeocode.addressComponent.city})
+      that.loadData()
+    })
+  },
+
+  loadData: function(){
+    var that =this
     getNowWeather({
       data: {
         key: KEY,
-        location: city,
+        location: this.data.city,
         language: lang,
         unit: unit,
       },
@@ -36,7 +44,7 @@ Page({
     getDailyWeather({
       data: {
         key: KEY,
-        location: city,
+        location: this.data.city,
         language: lang,
         unit: unit,
         start: 0,
