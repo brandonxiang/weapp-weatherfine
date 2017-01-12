@@ -24,6 +24,7 @@ Page({
         unit: unit,
       },
       success: (res) => {
+        console.log(res)
         const result = res.data.results[0]
         const cityName = result.location.name
         const temperature = result.now.temperature
@@ -48,7 +49,12 @@ Page({
         const daily = results.daily
         const weekday = ['今日','明天','后天']
         for(var i in daily){
-          future.push({day:weekday[i],high:daily[i].high,low:daily[i].low})
+          future.push({
+            day:weekday[i],
+            code_day:daily[i].code_day,
+            code_night:daily[i].code_night,
+            high:daily[i].high,
+            low:daily[i].low})
         }
         that.setData({future:future})
       }
