@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="wa-list">
+    <view class="wa-item">
+      当前城市
+    </view>
+    <view class="wa-item">
+      北京
+    </view>
+    <view class="wa-item">
+      上海
+    </view>
+    <view class="space"></view>
+    <view class="wa-item">
+      语言
+    </view>
+    <view class="wa-item">
+      关于
+    </view>
+  </view>
+</view>

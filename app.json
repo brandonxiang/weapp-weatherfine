@@ -1,7 +1,7 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/setting/setting"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -20,7 +20,7 @@
       "iconPath": "image/weather.png",
       "selectedIconPath": "image/weather.png"
     }, {
-      "pagePath": "pages/reading/reading",
+      "pagePath": "pages/setting/setting",
       "text": "设置",
       "iconPath": "image/setting.png",
       "selectedIconPath": "image/setting.png"
