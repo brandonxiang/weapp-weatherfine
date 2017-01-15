@@ -1,6 +1,6 @@
 import { getDailyWeather, getNowWeather, getCityName } from '../../utils/service'
-import { KEY } from '../../utils/key.js'
-
+import { KEY } from '../../utils/key'
+import event from '../../utils/event'
 
 var unit = 'c'
 var lang = 'zh-Hans'
@@ -8,22 +8,33 @@ var lang = 'zh-Hans'
 var app = getApp()
 Page({
   data: {
-    city:'深圳市',
+    city: 'local',
     now: {},
-    future:{}
+    future: {}
   },
 
   onLoad: function () {
     var that = this
-
-    getCityName((res)=>{
-      that.setData({city:res.data.regeocode.addressComponent.city})
-      that.loadData()
-    })
+    event.on("CityChanged", this, this.setCityData)
+    that.setCityData(this.data.city)
   },
 
-  loadData: function(){
-    var that =this
+  setCityData: function (city) {
+    console.log(city)
+    var that = this
+    if (city === 'local') {
+      getCityName((res) => {
+        that.setData({city:res.data.regeocode.addressComponent.city})
+        that.loadData()
+      })
+    } else {
+      that.setData({ city: city })
+      that.loadData()
+    }
+  },
+
+  loadData: function () {
+    var that = this
     getNowWeather({
       data: {
         key: KEY,
@@ -55,16 +66,17 @@ Page({
         const future = []
         const results = res.data.results[0]
         const daily = results.daily
-        const weekday = ['今日','明天','后天']
-        for(var i in daily){
+        const weekday = ['今日', '明天', '后天']
+        for (var i in daily) {
           future.push({
-            day:weekday[i],
-            code_day:daily[i].code_day,
-            code_night:daily[i].code_night,
-            high:daily[i].high,
-            low:daily[i].low})
+            day: weekday[i],
+            code_day: daily[i].code_day,
+            code_night: daily[i].code_night,
+            high: daily[i].high,
+            low: daily[i].low
+          })
         }
-        that.setData({future:future})
+        that.setData({ future: future })
       }
     })
   }
