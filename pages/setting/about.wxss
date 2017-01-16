@@ -2,8 +2,6 @@
 background:#4D8AD7;
 color:#fff;
 font-size:90px;
-padding-top:200rpx;
-padding-left:150rpx;
 line-height:50px;
 display:flex;
 justify-content:center;

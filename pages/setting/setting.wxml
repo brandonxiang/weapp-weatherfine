@@ -10,16 +10,11 @@
       上海
     </view>
     <view class="space"></view>
-    <modal class="wa-list" hidden="{{langHidden}}" no-cancel bindconfirm="langChange" bindcancel="langChange">
-      <view class="wa-item"> 中文 </view>
-      <view class="wa-item"> English </view>
-    </modal>
-    <view class="wa-item" bindtap="langTap">
+    <view data-type="lang" class="wa-item" bindtap="selectTap">
       语言
     </view>
-    <view class="wa-item">
-      摄氏度
-      <switch checked bindchange="switch1Change"/>
+    <view data-type="temp" class="wa-item" bindtap="selectTap">
+     温度单位
     </view>
     <view class="wa-item" bindtap="navigateAbout">
       关于
