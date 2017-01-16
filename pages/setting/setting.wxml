@@ -10,7 +10,11 @@
       上海
     </view>
     <view class="space"></view>
-    <view class="wa-item">
+    <modal class="wa-list" hidden="{{langHidden}}" no-cancel bindconfirm="langChange" bindcancel="langChange">
+      <view class="wa-item"> 中文 </view>
+      <view class="wa-item"> English </view>
+    </modal>
+    <view class="wa-item" bindtap="langTap">
       语言
     </view>
     <view class="wa-item">

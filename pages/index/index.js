@@ -20,7 +20,6 @@ Page({
   },
 
   setCityData: function (city) {
-    console.log(city)
     var that = this
     if (city === 'local') {
       getCityName((res) => {
@@ -43,7 +42,6 @@ Page({
         unit: unit,
       },
       success: (res) => {
-        console.log(res)
         const result = res.data.results[0]
         const cityName = result.location.name
         const temperature = result.now.temperature

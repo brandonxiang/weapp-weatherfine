@@ -2,7 +2,7 @@ import event from  '../../utils/event.js'
 
 Page({
   data:{
-    // text:"这是一个页面"
+    langHidden: true
   },
   onLoad:function(options){
 
@@ -14,5 +14,14 @@ Page({
       url:'/pages/index/index'
      })
   },
+  langTap: function(){
+    // this.setData({langHidden:false})
+    wx.navigateTo({
+      url: 'select'
+    })
+  },
+  langChange:function(){
+    this.setData({langHidden: true})
+  }
 
 })

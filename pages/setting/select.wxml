@@ -1,0 +1,3 @@
+<view class="wa-list">
+<view class="wa-item" wx:for="{{items}}">{{item.name}}</view>
+</view>
