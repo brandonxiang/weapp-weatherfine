@@ -14,5 +14,10 @@ Page({
       url:'/pages/index/index'
      })
   },
-
+  navigateAbout: function(){
+    console.log(1)
+    wx.navigateTo({
+      url: './about'
+    })
+  }
 })
