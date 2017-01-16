@@ -21,7 +21,7 @@
       摄氏度
       <switch checked bindchange="switch1Change"/>
     </view>
-    <view class="wa-item">
+    <view class="wa-item" bindtap="navigateAbout">
       关于
     </view>
   </view>

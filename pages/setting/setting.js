@@ -14,6 +14,7 @@ Page({
       url:'/pages/index/index'
      })
   },
+
   langTap: function(){
     // this.setData({langHidden:false})
     wx.navigateTo({
@@ -22,6 +23,14 @@ Page({
   },
   langChange:function(){
     this.setData({langHidden: true})
+  },
+
+
+  navigateAbout: function(){
+    console.log(1)
+    wx.navigateTo({
+      url: './about'
+    })
   }
 
 })
