@@ -1,5 +1,5 @@
 import { getDailyWeather, getNowWeather, getCityName } from '../../utils/service'
-import { KEY } from '../../utils/key'
+import { WEATHERKEY } from '../../utils/key'
 import event from '../../utils/event'
 
 var unit = 'c'
@@ -52,7 +52,7 @@ Page({
 
     getDailyWeather({
       data: {
-        key: KEY,
+        key: WEATHERKEY,
         location: this.data.city,
         language: lang,
         unit: unit,
