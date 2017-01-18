@@ -36,7 +36,7 @@ Page({
     var that = this
     getNowWeather({
       data: {
-        key: KEY,
+        key: WEATHERKEY,
         location: this.data.city,
         language: lang,
         unit: unit,
