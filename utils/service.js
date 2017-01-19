@@ -1,5 +1,5 @@
-const host = 'https://api.thinkpage.cn/v3/weather/'
-import {AMAPKEY} from './key.js'
+
+import {AMAPKEY,weatherhost,amaphost} from './key.js'
 
 const wxRequest = (params, url) => {
   wx.showToast({
@@ -26,11 +26,11 @@ const wxRequest = (params, url) => {
   })
 }
 
-const getDailyWeather = (params) => wxRequest(params, host+'daily.json')
+const getDailyWeather = (params) => wxRequest(params, weatherhost+'/daily.json')
 
-const getHourlyWeather = (params) => wxRequest(params, host+'hourly.json')
+const getHourlyWeather = (params) => wxRequest(params, weatherhost+'/hourly.json')
 
-const getNowWeather = (params) => wxRequest(params, host+'now.json')
+const getNowWeather = (params) => wxRequest(params, weatherhost+'/now.json')
 
 const getCityName =(callback)=>{
   wx.getLocation({
@@ -45,7 +45,7 @@ const getCityName =(callback)=>{
         key: AMAPKEY
       },
       success:callback
-    },'https://restapi.amap.com/v3/geocode/regeo')
+    },amaphost)
   }
 })
 }
