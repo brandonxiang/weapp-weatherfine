@@ -1,3 +1,10 @@
+import locales from './utils/locales'
+import T from './utils/wx-i18n'
+
+T.registerLocale(locales)
+T.setLocale('zh-Hans')
+wx.T = T
+
 //app.js
 App({
   onLaunch: function () {

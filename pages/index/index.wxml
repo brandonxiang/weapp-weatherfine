@@ -11,9 +11,9 @@
       <view class="wa-list">
         <view class="wa-item future-box" wx:key="{{day}}" wx:for="{{future}}">
           <text class="future-text">{{item.day}}</text>
-          <text class="future-text">日</text>
+          <text class="future-text">{{Day}}</text>
           <image src="../../asset/{{item.code_day}}.png" mode="widthFix" style="width:50rpx"></image>
-          <text class="future-text">夜</text>
+          <text class="future-text"> {{Night}}</text>
           <image src="../../asset/{{item.code_night}}.png" mode="widthFix" style="width:50rpx"></image>
           <text class="future-text">{{item.high}}</text>
           <text class="future-text">{{item.low}}</text>

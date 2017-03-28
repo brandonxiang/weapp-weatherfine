@@ -3,49 +3,63 @@ import { WEATHERKEY } from '../../utils/key'
 import event from '../../utils/event'
 
 
-
-var app = getApp()
+const app = getApp()
 Page({
   data: {
+    Day: '',
+    Night: '',
     unit: 'c',
     lang: 'zh-Hans',
     city: 'local',
     now: {},
-    future: {}
+    future: {},
   },
 
-  onLoad: function () {
-    var that = this
+  onLoad() {
     event.on("CityChanged", this, this.setCityData)
     event.on("TempChanged", this, this.setTempUnit)
     event.on("LangChanged", this, this.setLang)
-    that.setCityData(this.data.city)
+    this.setCityData(this.data.city)
+    this.setLang(this.data.lang)
   },
 
-  setCityData: function (city) {
+  onShow() {
+    if(this.data.city !== 'local'){
+      this.loadData()
+    }
+  },
+
+  setCityData(city) {
     var that = this
     if (city === 'local') {
       getCityName((res) => {
-        that.setData({city:res.data.regeocode.addressComponent.city})
+        console.log(res)
+        that.setData({ city: res.data.regeocode.addressComponent.city })
         that.loadData()
       })
     } else {
       that.setData({ city: city })
-      that.loadData()
     }
   },
 
-  setTempUnit: function(unit){
-    this.setData({unit:unit})
-    this.loadData()
+  setTempUnit(unit) {
+    this.setData({ unit: unit })
   },
 
-  setLang: function(lang){
-    this.setData({lang:lang})
-    this.loadData()
+  setLang(lang) {
+    const _ = wx.T._
+    console.log(wx.T)
+    console.log(_('Day'))
+    this.setData({
+      lang:lang,
+      Day: _('Day'),
+      Night: _('Night'),
+    })
+
+
   },
 
-  loadData: function () {
+  loadData() {
     var that = this
     getNowWeather({
       data: {
@@ -59,7 +73,14 @@ Page({
         const cityName = result.location.name
         const temperature = result.now.temperature
         const text = result.now.text
-        that.setData({ now: { cityName: cityName, temperature: temperature, text: text } })
+        that.setData({
+          now:
+          {
+            cityName: cityName,
+            temperature: temperature,
+            text: text
+          }
+        })
       }
     })
 
@@ -73,11 +94,11 @@ Page({
         days: 3
       },
       success: (res) => {
-        console.log(res)
+        const _ = wx.T._
         const future = []
         const results = res.data.results[0]
         const daily = results.daily
-        const weekday = ['今日', '明天', '后天']
+        const weekday = [_('Today'), _('Tomorrow'), _('DayAfterTmw')]
         for (var i in daily) {
           future.push({
             day: weekday[i],
@@ -90,5 +111,5 @@ Page({
         that.setData({ future: future })
       }
     })
-  }
+  },
 })

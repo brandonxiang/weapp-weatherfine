@@ -1,31 +1,31 @@
 <view class="container">
   <view class="wa-list">
     <view data-city="local" class="wa-item" bindtap="onSwitch">
-      当前城市
+      {{LocalCity}}
     </view>
     <view data-city="beijing" class="wa-item" bindtap="onSwitch">
-      北京
+      {{Beijing}}
     </view>
     <view data-city="shanghai" class="wa-item" bindtap="onSwitch">
-      上海
+      {{Shanghai}}
     </view>
     <view class="space"></view>
     <view class="wa-item">
       <picker bindchange="langChange" value="{{langIndex}}" range="{{lang}}">
         <view class="picker">
-          语言：{{lang[langIndex]}}
+          {{Language}}：{{lang[langIndex]}}
         </view>
       </picker>
     </view>
     <view class="wa-item">
       <picker bindchange="tempChange" value="{{tempIndex}}" range="{{temp}}">
         <view class="picker">
-          温度单位：{{temp[tempIndex]}}
+          {{TemperatureUnit}}：{{temp[tempIndex]}}
         </view>
       </picker>
     </view>
     <view class="wa-item" bindtap="navigateAbout">
-      关于
+      {{About}}
     </view>
   </view>
 </view>
