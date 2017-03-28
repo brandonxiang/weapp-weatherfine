@@ -2,12 +2,13 @@ import { getDailyWeather, getNowWeather, getCityName } from '../../utils/service
 import { WEATHERKEY } from '../../utils/key'
 import event from '../../utils/event'
 
-var unit = 'c'
-var lang = 'zh-Hans'
+
 
 var app = getApp()
 Page({
   data: {
+    unit: 'c',
+    lang: 'zh-Hans',
     city: 'local',
     now: {},
     future: {}
@@ -16,6 +17,8 @@ Page({
   onLoad: function () {
     var that = this
     event.on("CityChanged", this, this.setCityData)
+    event.on("TempChanged", this, this.setTempUnit)
+    event.on("LangChanged", this, this.setLang)
     that.setCityData(this.data.city)
   },
 
@@ -32,14 +35,24 @@ Page({
     }
   },
 
+  setTempUnit: function(unit){
+    this.setData({unit:unit})
+    this.loadData()
+  },
+
+  setLang: function(lang){
+    this.setData({lang:lang})
+    this.loadData()
+  },
+
   loadData: function () {
     var that = this
     getNowWeather({
       data: {
         key: WEATHERKEY,
         location: this.data.city,
-        language: lang,
-        unit: unit,
+        language: this.data.lang,
+        unit: this.data.unit,
       },
       success: (res) => {
         const result = res.data.results[0]
@@ -54,8 +67,8 @@ Page({
       data: {
         key: WEATHERKEY,
         location: this.data.city,
-        language: lang,
-        unit: unit,
+        language: this.data.lang,
+        unit: this.data.unit,
         start: 0,
         days: 3
       },

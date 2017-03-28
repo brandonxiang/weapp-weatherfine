@@ -10,11 +10,19 @@
       上海
     </view>
     <view class="space"></view>
-    <view data-type="lang" class="wa-item" bindtap="selectTap">
-      语言
+    <view class="wa-item">
+      <picker bindchange="langChange" value="{{langIndex}}" range="{{lang}}">
+        <view class="picker">
+          语言：{{lang[langIndex]}}
+        </view>
+      </picker>
     </view>
-    <view data-type="temp" class="wa-item" bindtap="selectTap">
-     温度单位
+    <view class="wa-item">
+      <picker bindchange="tempChange" value="{{tempIndex}}" range="{{temp}}">
+        <view class="picker">
+          温度单位：{{temp[tempIndex]}}
+        </view>
+      </picker>
     </view>
     <view class="wa-item" bindtap="navigateAbout">
       关于
