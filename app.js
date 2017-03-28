@@ -5,15 +5,15 @@ T.registerLocale(locales)
 T.setLocale('zh-Hans')
 wx.T = T
 
-//app.js
 App({
-  onLaunch: function () {
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+  onLaunch() {
+    console.log(this)
+    // //调用API从本地缓存中获取数据
+    // var logs = wx.getStorageSync('logs') || []
+    // logs.unshift(Date.now())
+    // wx.setStorageSync('logs', logs)
   },
-  getUserInfo:function(cb){
+  getUserInfo(cb){
     var that = this;
     if(this.globalData.userInfo){
       typeof cb == "function" && cb(this.globalData.userInfo)

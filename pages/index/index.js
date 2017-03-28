@@ -33,7 +33,6 @@ Page({
     var that = this
     if (city === 'local') {
       getCityName((res) => {
-        console.log(res)
         that.setData({ city: res.data.regeocode.addressComponent.city })
         that.loadData()
       })
@@ -48,15 +47,12 @@ Page({
 
   setLang(lang) {
     const _ = wx.T._
-    console.log(wx.T)
-    console.log(_('Day'))
+
     this.setData({
       lang:lang,
       Day: _('Day'),
       Night: _('Night'),
     })
-
-
   },
 
   loadData() {

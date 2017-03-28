@@ -2,7 +2,6 @@
   "pages":[
     "pages/index/index",
     "pages/setting/setting",
-    "pages/setting/select",
     "pages/setting/about"
   ],
   "window":{
@@ -13,7 +12,7 @@
   },
   "tabBar": {
     "color": "#888",
-    "selectedColor": "#89bdf7",
+    "selectedColor": "#4078C0",
     "backgroundColor": "#fff",
     "borderStyle": "white",
     "list": [{

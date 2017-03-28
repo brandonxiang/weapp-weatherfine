@@ -1,13 +1,10 @@
 <view class="container">
   <view class="wa-list">
-    <view data-city="local" class="wa-item" bindtap="onSwitch">
+    <view data-city="local" class="wa-item" bindtap="cityChange">
       {{LocalCity}}
     </view>
-    <view data-city="beijing" class="wa-item" bindtap="onSwitch">
-      {{Beijing}}
-    </view>
-    <view data-city="shanghai" class="wa-item" bindtap="onSwitch">
-      {{Shanghai}}
+    <view wx:for="{{Citys}}" wx:key="*this" data-city="{{item}}" class="wa-item"  bindtap="cityChange">
+      {{item}}
     </view>
     <view class="space"></view>
     <view class="wa-item">
