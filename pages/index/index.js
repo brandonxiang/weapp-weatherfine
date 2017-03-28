@@ -2,8 +2,8 @@ import { getDailyWeather, getNowWeather, getCityName } from '../../utils/service
 import { WEATHERKEY } from '../../utils/key'
 import event from '../../utils/event'
 
-
-const app = getApp()
+// const app = getApp()
+// console.log(app)
 Page({
   data: {
     Day: '',

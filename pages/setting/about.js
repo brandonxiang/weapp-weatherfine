@@ -1,9 +1,8 @@
 Page({
   data:{
-    text:"深圳市好天气科技有限公司"
-  },
-  onLoad:function(options){
-
+    WechatAccount:'公众号：brandonxiang',
+    Zhihu:"知乎: 项伟平",
+    programmer:"开发者：项伟平"
   },
  
 
