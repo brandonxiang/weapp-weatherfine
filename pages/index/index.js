@@ -33,7 +33,8 @@ Page({
     var that = this
     if (city === 'local') {
       getCityName((res) => {
-        that.setData({ city: res.data.regeocode.addressComponent.city })
+        const city = res.data.regeocode.addressComponent.city.replace('市','')
+        that.setData({ city })
         that.loadData()
       })
     } else {
@@ -47,7 +48,6 @@ Page({
 
   setLang(lang) {
     const _ = wx.T._
-
     this.setData({
       lang:lang,
       Day: _('Day'),
@@ -56,7 +56,42 @@ Page({
   },
 
   loadData() {
-    var that = this
+    //缓存
+    const that = this
+    wx.getStorage({
+      key: that.data.city+"now",
+      success: function(res){
+        const limit = 10*60000;
+        if(new Date().getTime() - new Date(res.data.time).getTime() > limit){
+          that.fetchNowData()
+        }else{
+          that.setData({now:res.data})
+        }
+      },
+      fail: function(res) {
+        that.fetchNowData()
+      },
+    })
+
+    wx.getStorage({
+      key: that.data.city+"future",
+      success: function(res){
+        const limit = 10*60000;
+        if(new Date().getTime() - new Date(res.data.time).getTime() > limit){
+          that.fetchFutureData()
+        }else{
+          that.setData({future:res.data.future})
+        }
+      },
+      fail: function(res) {
+        that.fetchFutureData()
+      },
+    })
+    
+  },
+
+  fetchNowData(){
+    const that = this
     getNowWeather({
       data: {
         key: WEATHERKEY,
@@ -66,20 +101,24 @@ Page({
       },
       success: (res) => {
         const result = res.data.results[0]
-        const cityName = result.location.name
-        const temperature = result.now.temperature
-        const text = result.now.text
-        that.setData({
-          now:
-          {
-            cityName: cityName,
-            temperature: temperature,
-            text: text
-          }
+        const cityName = result.location.name;
+        const now = {
+          cityName,
+          temperature: result.now.temperature,
+          text: result.now.text,
+          time: result.last_update,
+        }
+        that.setData({now})
+        wx.setStorage({
+          key: cityName + 'now',
+          data: now,
         })
       }
     })
+  },
 
+  fetchFutureData(){
+    const that = this
     getDailyWeather({
       data: {
         key: WEATHERKEY,
@@ -93,6 +132,7 @@ Page({
         const _ = wx.T._
         const future = []
         const results = res.data.results[0]
+        const cityName = results.location.name;
         const daily = results.daily
         const weekday = [_('Today'), _('Tomorrow'), _('DayAfterTmw')]
         for (var i in daily) {
@@ -104,8 +144,13 @@ Page({
             low: daily[i].low
           })
         }
-        that.setData({ future: future })
+        that.setData({ future })
+        const futureData = {time: results.last_update, future}
+         wx.setStorage({
+          key: cityName + 'future',
+          data: futureData,
+        })
       }
     })
-  },
+  }
 })
