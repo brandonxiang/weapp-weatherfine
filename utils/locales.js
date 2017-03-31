@@ -6,6 +6,7 @@ export default {
         "DayAfterTmw":"DAT",
         "Day": "Day",
         "Night":"Night",
+        //setting
         "Local City": "Local City",
         "Beijing": "Beijing",
         "Shanghai": "Shanghai",
@@ -15,7 +16,12 @@ export default {
         "Temperature Unit": "Temperature Unit",
         "About": "About",
         "Celsius":"Celsius",
-        "Fahrenheit":"Fahrenheit"
+        "Fahrenheit":"Fahrenheit",
+        //about
+        "WechatAccount":'WOA：brandonxiang',
+        "Zhihu":"Zhihu: 项伟平",
+        "Programmer":"Coder：项伟平",
+        "Data": "Data from Seniverse"
     },
     "zh-Hans": {
         "Weather": "天气",
@@ -24,6 +30,7 @@ export default {
         "DayAfterTmw":"后天",
         "Day": "日",
         "Night":"夜",
+        //setting
         "Local City": "当前城市",
         "Beijing": "北京",
         "Shanghai": "上海",
@@ -33,6 +40,11 @@ export default {
         "Temperature Unit": "温度单位",
         "About": "关于",
         "Celsius":"摄氏度",
-        "Fahrenheit":"华氏度"
+        "Fahrenheit":"华氏度",
+        //about
+        "WechatAccount":'公众号：brandonxiang',
+        "Zhihu":"知乎: 项伟平",
+        "Programmer":"开发者：项伟平",
+        "Data": "数据来自心知天气"
     }
 }

@@ -1,5 +1,5 @@
 import locales from './utils/locales'
-import T from './utils/wx-i18n'
+import T from './utils/wxapp-i18n'
 
 T.registerLocale(locales)
 T.setLocale('zh-Hans')
