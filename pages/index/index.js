@@ -61,8 +61,9 @@ Page({
     wx.getStorage({
       key: that.data.city+"now",
       success: function(res){
-        const limit = 10*60000;
-        if(new Date().getTime() - new Date(res.data.time).getTime() > limit){
+        const limit = 90*60000;
+        const diff = new Date().getTime() - new Date(res.data.time).getTime()
+        if(diff > limit){
           that.fetchNowData()
         }else{
           that.setData({now:res.data})
@@ -76,8 +77,9 @@ Page({
     wx.getStorage({
       key: that.data.city+"future",
       success: function(res){
-        const limit = 10*60000;
-        if(new Date().getTime() - new Date(res.data.time).getTime() > limit){
+        const limit = 240*60000;
+        const diff = new Date().getTime() - new Date(res.data.time).getTime()
+        if( diff > limit){
           that.fetchFutureData()
         }else{
           that.setData({future:res.data.future})

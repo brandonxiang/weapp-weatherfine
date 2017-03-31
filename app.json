@@ -7,7 +7,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#4078C0",
-    "navigationBarTitleText": "好天气",
+    "navigationBarTitleText": "小好天气",
     "navigationBarTextStyle":"white"
   },
   "tabBar": {
