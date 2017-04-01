@@ -33,6 +33,7 @@ Page({
     var that = this
     if (city === 'local') {
       getCityName((res) => {
+        console.log(res.data)
         const city = res.data.regeocode.addressComponent.city.replace('市','')
         that.setData({ city })
         that.loadData()
@@ -59,9 +60,10 @@ Page({
     //缓存
     const that = this
     wx.getStorage({
-      key: that.data.city+"now",
+      key: that.data.city+"Now",
       success: function(res){
-        const limit = 90*60000;
+        // const limit = 90*60000;
+        const limit = 4*60000;
         const diff = new Date().getTime() - new Date(res.data.time).getTime()
         if(diff > limit){
           that.fetchNowData()
@@ -75,9 +77,10 @@ Page({
     })
 
     wx.getStorage({
-      key: that.data.city+"future",
+      key: that.data.city+"Future",
       success: function(res){
-        const limit = 240*60000;
+        // const limit = 240*60000;
+        const limit = 5* 60000;
         const diff = new Date().getTime() - new Date(res.data.time).getTime()
         if( diff > limit){
           that.fetchFutureData()
@@ -112,7 +115,7 @@ Page({
         }
         that.setData({now})
         wx.setStorage({
-          key: cityName + 'now',
+          key: that.data.city + 'Now',
           data: now,
         })
       }
@@ -149,7 +152,7 @@ Page({
         that.setData({ future })
         const futureData = {time: results.last_update, future}
          wx.setStorage({
-          key: cityName + 'future',
+          key: that.data.city + 'Future',
           data: futureData,
         })
       }

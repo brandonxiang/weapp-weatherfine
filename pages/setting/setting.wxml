@@ -3,8 +3,8 @@
     <view data-city="local" class="wa-item" bindtap="cityChange">
       {{LocalCity}}
     </view>
-    <view wx:for="{{Citys}}" wx:key="*this" data-city="{{item}}" class="wa-item"  bindtap="cityChange">
-      {{item}}
+    <view wx:for="{{Citys}}" wx:key="*this" data-city="{{item.city}}" class="wa-item"  bindtap="cityChange">
+      {{item.name}}
     </view>
     <view class="space"></view>
     <view class="wa-item">

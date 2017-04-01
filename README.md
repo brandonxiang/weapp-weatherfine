@@ -2,10 +2,20 @@
 
 It is a demp of weapp for weather forecast. Weapp is a small web application by wechat.
 
+Update temperature problem:
+
+It is difficult to determine whether we should update weather info. Two criterion is built: First: the last-updated time for seniverse should be within 2 hours. Second: the last-checked time should be within 1 hour.
+
 TODO:
-- Customerized switcher with different cities
-- Customerized languange setting
-- Customerized temperature unit setting
+
+- [x] Customerized languange setting
+- [x] Customerized temperature unit setting
+- [] Customerized switcher with different cities
+- [] keep storage for weather data and how long for updating
+- [x] keep storage for city list
+- [] more information by free api
+- [] update setting page: value should be placed on the right 
+- [] position request fix
 
 # 微信小程序笔记二：天气应用
 

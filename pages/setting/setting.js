@@ -56,7 +56,12 @@ Page({
     const _ = wx.T._
     this.setData({
       LocalCity: _('Local City'),
-      Citys:[_('Beijing'),_('Shanghai'),_('Guangzhou'),_('Shenzhen')],
+      Citys:[
+        {city: '北京', name:_('Beijing')},
+        {city: '上海',name:_('Shanghai')},
+        {city:'广州',name:_('Guangzhou')},
+        {city:'深圳',name:_('Shenzhen')}
+      ],
       Language: _('Language'),
       TemperatureUnit: _('Temperature Unit'),
       About: _('About'),
