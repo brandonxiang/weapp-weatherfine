@@ -3,9 +3,14 @@
     <view data-city="local" class="wa-item" bindtap="cityChange">
       {{LocalCity}}
     </view>
-    <view wx:for="{{Citys}}" wx:key="*this" data-city="{{item.city}}" class="wa-item"  bindtap="cityChange">
+    <view wx:for="{{Cities}}" wx:key="*this" data-city="{{item.city}}" class="wa-item"  bindtap="cityChange">
       {{item.name}}
     </view>
+    <view data-city="local" class="wa-item" bindtap="modeCity">
+      {{More}}
+    </view>
+
+
     <view class="space"></view>
     <view class="wa-item">
       <picker bindchange="langChange" value="{{langIndex}}" range="{{lang}}">

@@ -21,7 +21,8 @@ export default {
         "WechatAccount":'WOA：brandonxiang',
         "Zhihu":"Zhihu: 项伟平",
         "Programmer":"Coder：项伟平",
-        "Data": "Data from Seniverse"
+        "Data": "Data from Seniverse",
+        "More": "More",
     },
     "zh-Hans": {
         "Weather": "天气",
@@ -45,6 +46,7 @@ export default {
         "WechatAccount":'公众号：brandonxiang',
         "Zhihu":"知乎: 项伟平",
         "Programmer":"开发者：项伟平",
-        "Data": "数据来自心知天气"
+        "Data": "数据来自心知天气",
+        "More": "更多",
     }
 }
