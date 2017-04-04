@@ -3,7 +3,7 @@
     <view class="zan-cell" data-city="local" bindtap="cityChange">
       <view class="zan-cell__bd">{{LocalCity}}</view>
     </view>
-    <view class="zan-cell" wx:for="{{Cities}}" wx:key="*this" data-city="{{item.city}}" bindtap="cityChange">
+    <view class="zan-cell" wx:for="{{Cities}}" wx:key="*this"  wx:if="{{item.check}}" data-city="{{item.city}}" bindtap="cityChange">
       <view class="zan-cell__bd">{{item.name}}</view>
     </view>
     <navigator class="zan-cell" url="../more/more">
