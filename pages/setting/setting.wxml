@@ -1,19 +1,36 @@
 <view class="container">
-  <view class="wa-list">
-    <view data-city="local" class="wa-item" bindtap="cityChange">
-      {{LocalCity}}
+  <view class="zan-panel">
+    <view class="zan-cell" data-city="local" bindtap="cityChange">
+      <view class="zan-cell__bd">{{LocalCity}}</view>
     </view>
-    <view wx:for="{{Cities}}" wx:key="*this" data-city="{{item.city}}" class="wa-item"  bindtap="cityChange">
-      {{item.name}}
+    <view class="zan-cell" wx:for="{{Cities}}" wx:key="*this" data-city="{{item.city}}" bindtap="cityChange">
+      <view class="zan-cell__bd">{{item.name}}</view>
     </view>
-    <view data-city="local" class="wa-item" bindtap="modeCity">
-      {{More}}
+    <view class="zan-cell" data-city="local" bindtap="modeCity">
+      <view class="zan-cell__bd">{{More}}</view>
     </view>
+  </view>
 
+  <view class="zan-panel">
+    <view class="zan-cell zan-form__item">
+      <text class="zan-form__title">{{Language}}</text>
+      <view class="zan-form__input zan-cell__bd">
+        <picker mode="selector" range="{{ lang }}" value="{{ langIndex }}" bindchange="langChange">
+          {{lang[langIndex]}}
+        </picker>
+      </view>
+    </view>
+    <view class="zan-cell zan-form__item">
+      <text class="zan-form__title">{{TemperatureUnit}}</text>
+      <view class="zan-form__input zan-cell__bd">
+        <picker mode="selector" range="{{ temp }}" value="{{ tempIndex }}" bindchange="tempChange">
+          {{temp[tempIndex]}}
+        </picker>
+      </view>
+    </view>
+  </view>
 
-    <view class="space"></view>
-    <view class="wa-item">
-      <picker bindchange="langChange" value="{{langIndex}}" range="{{lang}}">
+  <!--<picker bindchange="langChange" value="{{langIndex}}" range="{{lang}}">
         <view class="picker">
           {{Language}}：{{lang[langIndex]}}
         </view>
@@ -25,9 +42,10 @@
           {{TemperatureUnit}}：{{temp[tempIndex]}}
         </view>
       </picker>
-    </view>
-    <view class="wa-item" bindtap="navigateAbout">
-      {{About}}
+    </view>-->
+  <view class="zan-panel">
+    <view class="zan-cell" bindtap="navigateAbout">
+      <view class="zan-cell__bd">{{About}}</view>
     </view>
   </view>
 </view>
