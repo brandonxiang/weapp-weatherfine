@@ -14,7 +14,7 @@ TODO:
 - [] keep storage for weather data and how long for updating
 - [x] keep storage for city list
 - [] more information by free api
-- [] update setting page: value should be placed on the right 
+- [x] update setting page: value should be placed on the right 
 - [] position request fix
 
 # 微信小程序笔记二：天气应用

@@ -48,16 +48,6 @@ Page({
     event.emit('TempChanged', this.data.tempCode[index])
   },
 
-  moreCity() {
-
-  },
-
-  navigateAbout() {
-    wx.navigateTo({
-      url: './about'
-    })
-  },
-
   setLang() {
     const _ = wx.T._
     const that = this
@@ -65,7 +55,6 @@ Page({
       key: 'Cities',
       success: function (res) {
         that.setData({Cities:res.data});
-        that.setCitiesStorage()
       },
       fail: function (res) {
         console.log(res)

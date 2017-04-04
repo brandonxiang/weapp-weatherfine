@@ -1,8 +1,9 @@
 {
   "pages":[
-    "pages/index/index",
+    "pages/more/more",
     "pages/setting/setting",
-    "pages/setting/about"
+    "pages/setting/about",
+    "pages/index/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

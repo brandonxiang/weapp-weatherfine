@@ -1,0 +1,23 @@
+/* pages/more/more.wxss */
+
+
+.box{
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+}
+
+.col-25{
+  flex:0 0 25%;
+  max-width: 25%;
+  box-sizing:border-box;
+}
+
+.selector{
+text-align:center;
+border:1rpx solid #e5e5e5;
+margin:20rpx 10rpx;
+padding:10rpx;
+border-radius:20rpx;
+
+}

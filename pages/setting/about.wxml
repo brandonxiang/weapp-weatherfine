@@ -1,21 +1,20 @@
 <view class="container">
-<view class="zan-panel">
-<view class="zan-cell">
-   <view class="zan-cell__bd">{{WOA}}</view>
-   <view class="zan-cell__ft">{{WOAItem}}</view>
-</view>
-<view class="zan-cell">
-    <view class="zan-cell__bd">{{Zhihu}}</view>
-   <view class="zan-cell__ft">{{ZhihuItem}}</view>
-</view>
-<view class="zan-cell">
-    <view class="zan-cell__bd">{{Coder}}</view>
-    <view class="zan-cell__ft">{{CoderItem}}</view>
-</view>
-<view class="zan-cell">
-    <view class="zan-cell__bd">{{Data}}</view>
-    <view class="zan-cell__ft">{{DataItem}}</view>
-</view>
-</view>
-
+  <view class="zan-panel">
+    <view class="zan-cell">
+      <view class="zan-cell__bd">{{WOA}}</view>
+      <view class="zan-cell__ft">{{WOAItem}}</view>
+    </view>
+    <view class="zan-cell">
+      <view class="zan-cell__bd">{{Zhihu}}</view>
+      <view class="zan-cell__ft">{{ZhihuItem}}</view>
+    </view>
+    <view class="zan-cell">
+      <view class="zan-cell__bd">{{Coder}}</view>
+      <view class="zan-cell__ft">{{CoderItem}}</view>
+    </view>
+    <view class="zan-cell">
+      <view class="zan-cell__bd">{{Data}}</view>
+      <view class="zan-cell__ft">{{DataItem}}</view>
+    </view>
+  </view>
 </view>
