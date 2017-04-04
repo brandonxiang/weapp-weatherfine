@@ -2,8 +2,8 @@
   <view class="doc-title">热门城市</view>
   <view class="zan-panel">
     <view class="zan-cell box">
-      <view class="col-25" wx:for="{{AllCities}}" wx:key="*this">
-      <view class="selector">{{item.name}}</view>
+      <view class="col-25" wx:for="{{Cities}}" wx:key="*this">
+      <view class="selector {{item.check?'active':''}}">{{item.name}}</view>
       </view>
     </view>
   </view>

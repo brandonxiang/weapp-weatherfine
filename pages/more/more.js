@@ -1,41 +1,29 @@
 Page({
     data: {
-        Cities: [],
-        AllCities: [],
     },
 
     onLoad() {
-        const that = this
+        const _ = wx.T._
         wx.getStorage({
             key: 'Cities',
-            success: function (res) {
-                that.setData({ Cities: res.data });
+            success: (res) => {
+                this.setData({ Cities: res.data });
             },
-            fail: function (res) {
+            fail:  (res) => {
                 console.log(res)
-                that.setData({
+                this.setData({
                     Cities: [
-                        { city: '北京', name: _('Beijing') },
-                        { city: '上海', name: _('Shanghai') },
-                        { city: '广州', name: _('Guangzhou') },
-                        { city: '深圳', name: _('Shenzhen') }
+                    { city: '北京', name: _('Beijing'), check: true },
+                    { city: '天津', name: _('Tianjing'), check:false },
+                    { city: '上海', name: _('Shanghai'), check:true },
+                    { city: '重庆', name: _('Chongqing'), check:false },
+                    { city: '沈阳', name: _('Shenyang'), check:false },
+                    { city: '广州', name: _('Guangzhou'), check:true },
+                    { city: '深圳', name: _('Shenzhen'), check:true }
                     ],
                 })
             },
         })
-        this.initLang()
     },
 
-    initLang(){
-        const _ = wx.T._
-        this.setData({AllCities:[
-            { city: '北京', name: _('Beijing') },
-            { city: '天津', name: _('Tianjing') },
-            { city: '上海', name: _('Shanghai') },
-            { city: '重庆', name: _('Chongqing') },
-            { city: '沈阳', name: _('Shenyang') },
-            { city: '广州', name: _('Guangzhou') },
-            { city: '深圳', name: _('Shenzhen') }
-        ]})
-    }
 })
