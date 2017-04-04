@@ -17,12 +17,14 @@ export default {
         "About": "About",
         "Celsius":"Celsius",
         "Fahrenheit":"Fahrenheit",
-        //about
-        "WechatAccount":'WOA：brandonxiang',
-        "Zhihu":"Zhihu: 项伟平",
-        "Programmer":"Coder：项伟平",
-        "Data": "Data from Seniverse",
         "More": "More",
+        //about
+        "WOA":'WOA',
+        "Zhihu":"Zhihu",
+        "Coder":"Coder",
+        "Data": "Data",
+        "DataItem":"Seniverse",
+
     },
     "zh-Hans": {
         "Weather": "天气",
@@ -42,11 +44,13 @@ export default {
         "About": "关于",
         "Celsius":"摄氏度",
         "Fahrenheit":"华氏度",
-        //about
-        "WechatAccount":'公众号：brandonxiang',
-        "Zhihu":"知乎: 项伟平",
-        "Programmer":"开发者：项伟平",
-        "Data": "数据来自心知天气",
         "More": "更多",
+        //about
+        "WOA":'公众号',
+        "Zhihu":"知乎",
+        "Coder":"开发者",
+        "Data": "数据",
+        "DataItem":"心知天气",
+
     }
 }

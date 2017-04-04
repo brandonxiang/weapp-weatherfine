@@ -1,9 +1,13 @@
 Page({
   data:{
-    WechatAccount:'公众号：brandonxiang',
-    Zhihu:"知乎: 项伟平",
-    Programmer:"开发者：项伟平",
-    Data: "数据来自心知天气"
+    WOA:'公众号',
+    WOAItem:'brandonxiang',
+    Zhihu:"知乎",
+    ZhihuItem:'项伟平',
+    Coder:"开发者",
+    CoderItem:'项伟平',
+    Data: "数据",
+    DataItem:'心知天气'
   },
 
   onLoad(){
@@ -13,10 +17,11 @@ Page({
   setLang(){
     const _ = wx.T._
     this.setData({
-      WechatAccount:_('WechatAccount'),
+      WOA:_('WOA'),
       Zhihu: _('Zhihu'),
-      Programmer:_('Programmer'),
-      Data: _('Data')
+      Coder:_('Coder'),
+      Data: _('Data'),
+      DataItem:_('DataItem'),
     })
   }
 })
