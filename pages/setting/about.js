@@ -6,8 +6,13 @@ Page({
     ZhihuItem:'项伟平',
     Coder:"开发者",
     CoderItem:'项伟平',
+    Jianshu:"简书",
+    JianshuItem:"brandonxiang",
+    Github:"Github",
+    GithubItem:"brandonxiang",
     Data: "数据",
-    DataItem:'心知天气'
+    DataItem:'心知天气',
+
   },
 
   onLoad(){

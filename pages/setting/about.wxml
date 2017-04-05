@@ -5,12 +5,20 @@
       <view class="zan-cell__ft">{{WOAItem}}</view>
     </view>
     <view class="zan-cell">
+      <view class="zan-cell__bd">{{Coder}}</view>
+      <view class="zan-cell__ft">{{CoderItem}}</view>
+    </view>
+    <view class="zan-cell">
       <view class="zan-cell__bd">{{Zhihu}}</view>
       <view class="zan-cell__ft">{{ZhihuItem}}</view>
     </view>
     <view class="zan-cell">
-      <view class="zan-cell__bd">{{Coder}}</view>
-      <view class="zan-cell__ft">{{CoderItem}}</view>
+      <view class="zan-cell__bd">{{Jianshu}}</view>
+      <view class="zan-cell__ft">{{JianshuItem}}</view>
+    </view>
+    <view class="zan-cell">
+      <view class="zan-cell__bd">{{Github}}</view>
+      <view class="zan-cell__ft">{{GithubItem}}</view>
     </view>
     <view class="zan-cell">
       <view class="zan-cell__bd">{{Data}}</view>

@@ -11,12 +11,13 @@ TODO:
 - [x] Customerized languange setting
 - [x] Customerized temperature unit setting
 - [x] Customerized switcher with different cities
-- [] add a util for set city Name
+- [x] add a util for set city Name
 - [] keep storage for weather data and how long for updating
 - [x] keep storage for city list
 - [] more information by free api
 - [x] update setting page: value should be placed on the right 
 - [] position request fix
+- [] if version is changed, localstorage will be clear
 
 # 微信小程序笔记二：天气应用
 
