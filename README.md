@@ -10,7 +10,8 @@ TODO:
 
 - [x] Customerized languange setting
 - [x] Customerized temperature unit setting
-- [] Customerized switcher with different cities
+- [x] Customerized switcher with different cities
+- [] add a util for set city Name
 - [] keep storage for weather data and how long for updating
 - [x] keep storage for city list
 - [] more information by free api
