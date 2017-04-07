@@ -24,7 +24,7 @@ Page({
   },
 
   onShow() {
-    if(this.data.city !== 'local'){
+    if (this.data.city !== 'local') {
       this.loadData()
     }
   },
@@ -34,7 +34,7 @@ Page({
     if (city === 'local') {
       getCityName((res) => {
         console.log(res.data)
-        const city = res.data.regeocode.addressComponent.city.replace('市','')
+        const city = res.data.regeocode.addressComponent.city.replace('市', '')
         that.setData({ city })
         that.loadData()
       })
@@ -50,7 +50,7 @@ Page({
   setLang(lang) {
     const _ = wx.T._
     this.setData({
-      lang:lang,
+      lang: lang,
       Day: _('Day'),
       Night: _('Night'),
     })
@@ -60,42 +60,46 @@ Page({
     //缓存
     const that = this
     wx.getStorage({
-      key: that.data.city+"Now",
-      success: function(res){
-        // const limit = 90*60000;
-        const limit = 4*60000;
+      key: that.data.city + "Now",
+      success: function (res) {
+        const limit = 90 * 60000;
+        // const limit = 4 * 60000;
+        const updateLimit = 30 * 6000;
         const diff = new Date().getTime() - new Date(res.data.time).getTime()
-        if(diff > limit){
+        const updateDiff = new Date().getTime() - new Date(res.data.updateTime).getTime()
+        if (diff > limit && updateDiff > updateLimit) {
           that.fetchNowData()
-        }else{
-          that.setData({now:res.data})
+        } else {
+          that.setData({ now: res.data })
         }
       },
-      fail: function(res) {
+      fail: function (res) {
         that.fetchNowData()
       },
     })
 
     wx.getStorage({
-      key: that.data.city+"Future",
-      success: function(res){
-        // const limit = 240*60000;
-        const limit = 5* 60000;
+      key: that.data.city + "Future",
+      success: function (res) {
+        const limit = 360 * 60000;
+        const updateLimit = 60 * 60000;
+        // const limit = 5 * 60000;
         const diff = new Date().getTime() - new Date(res.data.time).getTime()
-        if( diff > limit){
+        const updateDiff = new Date().getTime() - new Date(res.data.updateTime).getTime()
+        if (diff > limit && updateDiff > updateLimit) {
           that.fetchFutureData()
-        }else{
-          that.setData({future:res.data.future})
+        } else {
+          that.setData({ future: res.data.future })
         }
       },
-      fail: function(res) {
+      fail: function (res) {
         that.fetchFutureData()
       },
     })
-    
+
   },
 
-  fetchNowData(){
+  fetchNowData() {
     const that = this
     getNowWeather({
       data: {
@@ -112,8 +116,9 @@ Page({
           temperature: result.now.temperature,
           text: result.now.text,
           time: result.last_update,
+          updateTime: (new Date).toString()
         }
-        that.setData({now})
+        that.setData({ now })
         wx.setStorage({
           key: that.data.city + 'Now',
           data: now,
@@ -122,7 +127,7 @@ Page({
     })
   },
 
-  fetchFutureData(){
+  fetchFutureData() {
     const that = this
     getDailyWeather({
       data: {
@@ -150,8 +155,8 @@ Page({
           })
         }
         that.setData({ future })
-        const futureData = {time: results.last_update, future}
-         wx.setStorage({
+        const futureData = { time: results.last_update, future }
+        wx.setStorage({
           key: that.data.city + 'Future',
           data: futureData,
         })
