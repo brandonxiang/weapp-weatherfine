@@ -2,7 +2,7 @@ import { getDailyWeather, getNowWeather, getCityName } from '../../utils/service
 import { WEATHERKEY } from '../../utils/key'
 import event from '../../utils/event'
 
-// const app = getApp()
+const app = getApp()
 // console.log(app)
 Page({
   data: {
@@ -58,42 +58,41 @@ Page({
 
   loadData() {
     //缓存
-    const that = this
+    const env = app.globalData.env
     wx.getStorage({
-      key: that.data.city + "Now",
-      success: function (res) {
-        const limit = 90 * 60000;
-        // const limit = 4 * 60000;
-        const updateLimit = 30 * 6000;
+      key: this.data.city + "Now",
+      success: (res) => {
+
+        const limit = env === "prod" ? 90 * 60000 : 60000;
+        const updateLimit = env === "prod" ? 30 * 6000 : 0;
         const diff = new Date().getTime() - new Date(res.data.time).getTime()
         const updateDiff = new Date().getTime() - new Date(res.data.updateTime).getTime()
         if (diff > limit && updateDiff > updateLimit) {
-          that.fetchNowData()
+          this.fetchNowData()
         } else {
-          that.setData({ now: res.data })
+          this.setData({ now: res.data })
         }
       },
-      fail: function (res) {
-        that.fetchNowData()
+      fail: (res) => {
+        this.fetchNowData()
       },
     })
 
     wx.getStorage({
-      key: that.data.city + "Future",
-      success: function (res) {
-        const limit = 360 * 60000;
-        const updateLimit = 60 * 60000;
-        // const limit = 5 * 60000;
+      key: this.data.city + "Future",
+      success: (res) => {
+        const limit = env === "prod" ? 360 * 60000 : 60000;
+        const updateLimit = env === "prod" ? 60 * 60000 : 0;
         const diff = new Date().getTime() - new Date(res.data.time).getTime()
         const updateDiff = new Date().getTime() - new Date(res.data.updateTime).getTime()
         if (diff > limit && updateDiff > updateLimit) {
-          that.fetchFutureData()
+          this.fetchFutureData()
         } else {
-          that.setData({ future: res.data.future })
+          this.setData({ future: res.data.future })
         }
       },
-      fail: function (res) {
-        that.fetchFutureData()
+      fail: (res) => {
+        this.fetchFutureData()
       },
     })
 

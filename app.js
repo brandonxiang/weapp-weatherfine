@@ -7,6 +7,9 @@ wx.T = T
 
 App({
   onLaunch() {
+    this.clearStorageAfterUpdated()
+  },
+  clearStorageAfterUpdated(){
     wx.getStorage({
       key: 'version',
       success: (res) =>  {
@@ -47,5 +50,6 @@ App({
   globalData: {
     userInfo: null,
     version: "1.2.0",
+    env:"dev",
   }
 })
