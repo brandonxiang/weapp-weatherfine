@@ -49,7 +49,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    version: "1.2.0",
-    env:"dev",
+    version: "1.1.0",
+    env:"prod",
   }
 })

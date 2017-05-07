@@ -3,7 +3,7 @@ import { WEATHERKEY } from '../../utils/key'
 import event from '../../utils/event'
 
 const app = getApp()
-// console.log(app)
+
 Page({
   data: {
     Day: '',
@@ -30,16 +30,14 @@ Page({
   },
 
   setCityData(city) {
-    var that = this
     if (city === 'local') {
       getCityName((res) => {
-        console.log(res.data)
         const city = res.data.regeocode.addressComponent.city.replace('市', '')
-        that.setData({ city })
-        that.loadData()
+        this.setData({ city })
+        this.loadData()
       })
     } else {
-      that.setData({ city: city })
+      this.setData({ city: city })
     }
   },
 
@@ -63,7 +61,7 @@ Page({
       key: this.data.city + "Now",
       success: (res) => {
 
-        const limit = env === "prod" ? 90 * 60000 : 60000;
+        const limit = env === "prod" ? 90 * 60000 : 0;
         const updateLimit = env === "prod" ? 30 * 6000 : 0;
         const diff = new Date().getTime() - new Date(res.data.time).getTime()
         const updateDiff = new Date().getTime() - new Date(res.data.updateTime).getTime()
@@ -81,7 +79,7 @@ Page({
     wx.getStorage({
       key: this.data.city + "Future",
       success: (res) => {
-        const limit = env === "prod" ? 360 * 60000 : 60000;
+        const limit = env === "prod" ? 360 * 60000 : 0;
         const updateLimit = env === "prod" ? 60 * 60000 : 0;
         const diff = new Date().getTime() - new Date(res.data.time).getTime()
         const updateDiff = new Date().getTime() - new Date(res.data.updateTime).getTime()
@@ -99,7 +97,6 @@ Page({
   },
 
   fetchNowData() {
-    const that = this
     getNowWeather({
       data: {
         key: WEATHERKEY,
@@ -110,6 +107,7 @@ Page({
       success: (res) => {
         const result = res.data.results[0]
         const cityName = result.location.name;
+        console.log(result)
         const now = {
           cityName,
           temperature: result.now.temperature,
@@ -117,9 +115,9 @@ Page({
           time: result.last_update,
           updateTime: (new Date).toString()
         }
-        that.setData({ now })
+        this.setData({ now })
         wx.setStorage({
-          key: that.data.city + 'Now',
+          key: this.data.city + 'Now',
           data: now,
         })
       }
@@ -127,7 +125,6 @@ Page({
   },
 
   fetchFutureData() {
-    const that = this
     getDailyWeather({
       data: {
         key: WEATHERKEY,
@@ -153,10 +150,14 @@ Page({
             low: daily[i].low
           })
         }
-        that.setData({ future })
-        const futureData = { time: results.last_update, future }
+        this.setData({ future })
+        const futureData = {
+          future,
+          time: results.last_update,
+          updateTime: (new Date).toString(),
+        }
         wx.setStorage({
-          key: that.data.city + 'Future',
+          key: this.data.city + 'Future',
           data: futureData,
         })
       }

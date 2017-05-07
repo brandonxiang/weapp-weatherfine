@@ -7,7 +7,7 @@
     <text class="now-temperature">{{now.temperature}}</text>
   </view>
   <view class="futureinfo">
-    <scroll-view scroll-y="true" style="height: 200px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
       <view class="zan-panel">
         <view class="zan-cell future-box" wx:key="{{day}}" wx:for="{{future}}">
           <text class="future-text">{{item.day}}</text>
@@ -19,6 +19,25 @@
           <text class="future-text">{{item.low}}</text>
         </view>
       </view>
+      <!--<view class="zan-panel">
+        <view class="zan-cell">
+          <view>
+            <image src="../../image/humidity.png" mode="widthFix" style="width:50rpx"></image>
+            <text class="future-text">{{}}</text>
+          </view>
+          <view>
+            <image src="../../image/pressure.png" mode="widthFix" style="width:50rpx"></image>
+          </view>
+        </view>
+        <view class="zan-cell">
+          <view>
+            <image src="../../image/visible.png" mode="widthFix" style="width:50rpx"></image>
+          </view>
+          <view>
+            <image src="../../image/wind.png" mode="widthFix" style="width:50rpx"></image>
+          </view>
+        </view>
+      </view>-->
     </scroll-view>
   </view>
 </view>
